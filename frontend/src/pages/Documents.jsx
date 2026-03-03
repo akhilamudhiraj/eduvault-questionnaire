@@ -53,9 +53,7 @@ export default function Documents({ session }) {
 
     setLoading(true)
     try {
-      await axios.post(`${API}/documents/upload-file`, formData, {
-        headers: { ...headers, 'Content-Type': 'multipart/form-data' }
-      })
+      await axios.post(`${API}/documents/upload-file`, formData, { headers })
       setSuccess('File uploaded and parsed successfully!')
       setFile(null)
       setName('')
@@ -63,7 +61,7 @@ export default function Documents({ session }) {
       fetchDocuments()
       setTimeout(() => setSuccess(''), 3000)
     } catch (err) {
-      alert(err.response?.data?.detail || 'Error uploading file')
+      alert(err.response?.data?.detail || err.message || 'Error uploading file')
     }
     setLoading(false)
   }

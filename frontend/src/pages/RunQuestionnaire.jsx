@@ -35,12 +35,10 @@ export default function RunQuestionnaire({ session }) {
       const formData = new FormData()
       formData.append('file', file)
       if (title.trim()) formData.append('title', title.trim())
-      const res = await axios.post(`${API}/questionnaire/run-file`, formData, {
-        headers: { ...headers, 'Content-Type': 'multipart/form-data' }
-      })
+      const res = await axios.post(`${API}/questionnaire/run-file`, formData, { headers })
       navigate(`/results/${res.data.run_id}`)
     } catch (err) {
-      setError(err.response?.data?.detail || 'Something went wrong')
+      setError(err.response?.data?.detail || err.message || 'Something went wrong')
     }
     setLoading(false)
   }
