@@ -3,7 +3,7 @@
 Structured questionnaire answering system built for the Almabase GTM Engineering Internship assignment.
 
 ## Live App / Repository
-- Live URL: `ADD_YOUR_DEPLOYED_URL_HERE`
+- Live URL: https://eduvault-questionnaire.vercel.app
 - Repository URL: `https://github.com/akhilamudhiraj/eduvault-questionnaire`
 
 ## Industry & Fictional Company
