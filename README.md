@@ -4,7 +4,7 @@ Structured questionnaire answering system built for the Almabase GTM Engineering
 
 ## Live App / Repository
 - Live URL: `ADD_YOUR_DEPLOYED_URL_HERE`
-- Repository URL: `ADD_YOUR_GITHUB_REPO_URL_HERE`
+- Repository URL: `https://github.com/akhilamudhiraj/eduvault-questionnaire`
 
 ## Industry & Fictional Company
 - Industry: EdTech SaaS (Higher Education)
@@ -102,4 +102,3 @@ Optional frontend env:
   - Onboarding & Integration Guide
   - Access Control Policy
 - 8–15 question vendor/security questionnaire for testing.
-

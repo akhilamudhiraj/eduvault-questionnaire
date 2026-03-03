@@ -9,6 +9,7 @@ from pdfminer.high_level import extract_text
 from openpyxl import load_workbook
 import csv
 import io
+import re
 
 router = APIRouter()
 
@@ -90,8 +91,9 @@ def process_questionnaire_run(supabase, user_id: str, title: str, content: str) 
     not_found = 0
 
     for q in questions:
+        ai_prompt = re.sub(r'^(?:Q(?:uestion)?\s*)?\d+[.):\s]+', '', q["question_text"].strip(), flags=re.IGNORECASE)
         try:
-            result = answer_question(q["question_text"], reference_docs)
+            result = answer_question(ai_prompt or q["question_text"], reference_docs)
         except Exception as e:
             # Expose a concise upstream failure so frontend can display the real cause.
             raise HTTPException(

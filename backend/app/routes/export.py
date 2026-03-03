@@ -168,7 +168,7 @@ async def export_run(run_id: str, authorization: str = Header(...)):
     for q in questions:
         # Question
         q_para = doc.add_paragraph()
-        q_run = q_para.add_run(f"Q{q['question_number']}: {q['question_text']}")
+        q_run = q_para.add_run(q['question_text'] or "")
         q_run.bold = True
         q_run.font.size = Pt(12)
 
@@ -233,7 +233,7 @@ async def export_run_pdf(run_id: str, authorization: str = Header(...)):
     ]
 
     for q in questions:
-        lines.extend(wrap_text(f"Q{q['question_number']}: {q['question_text']}"))
+        lines.extend(wrap_text(q.get("question_text") or ""))
         lines.extend(wrap_text(f"Answer: {q.get('answer') or 'Not found in references.'}"))
         lines.append(f"Confidence: {int((q.get('confidence') or 0) * 100)}%")
 

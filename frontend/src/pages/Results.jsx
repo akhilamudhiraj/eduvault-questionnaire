@@ -133,7 +133,7 @@ export default function Results({ session }) {
         {questions.map(q => (
           <div key={q.id} style={cardStyle}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <h3 style={{ color: '#1e3a5f', margin: '0 0 12px 0' }}>Q{q.question_number}: {q.question_text}</h3>
+              <h3 style={{ color: '#1e3a5f', margin: '0 0 12px 0', whiteSpace: 'pre-wrap' }}>{q.question_text}</h3>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 {q.is_edited && <span style={{ fontSize: '11px', backgroundColor: '#f39c12', color: 'white', padding: '2px 8px', borderRadius: '10px' }}>Edited</span>}
                 <span style={{ fontSize: '12px', padding: '4px 10px', borderRadius: '12px', backgroundColor: getConfidenceColor(q.confidence), color: 'white', fontWeight: 'bold' }}>

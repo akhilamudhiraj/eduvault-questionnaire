@@ -5,10 +5,10 @@ def parse_questionnaire(text: str) -> list[dict]:
     lines = text.strip().split('\n')
     
     current_question = None
-    question_number = 0
 
     for line in lines:
-        line = line.strip()
+        raw_line = line.rstrip()
+        line = raw_line.strip()
         if not line:
             continue
 
@@ -17,13 +17,14 @@ def parse_questionnaire(text: str) -> list[dict]:
         if match:
             if current_question:
                 questions.append(current_question)
-            question_number += 1
+            parsed_number = int(match.group(1))
             current_question = {
-                "question_number": question_number,
-                "question_text": match.group(2).strip()
+                "question_number": parsed_number,
+                # Preserve question text exactly as entered (incl. numbering prefix).
+                "question_text": line
             }
         elif current_question:
-            current_question["question_text"] += " " + line
+            current_question["question_text"] += "\n" + line
 
     if current_question:
         questions.append(current_question)
